@@ -1,14 +1,15 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignOut } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useMealHooks from '../../Hooks/useMealHooks';
 // import logo from "../../../Images/logo.png";
 // import "./Navbar.css";
 const Navbar = () => {
- 
-    const [user]=useAuthState(auth);
+  
+  const [user]=useAuthState(auth);
+  const [signOut, gloading, gerror] = useSignOut(auth);
   const {meals}=useMealHooks();
      return (
           <nav class="navbar navbar-expand-lg bg-light text-dark">
@@ -38,10 +39,14 @@ const Navbar = () => {
                 <li class="nav-item">
                   <Link class="nav-link active" to="/contact">Contact</Link>
                 </li>
-             
-                <li class="nav-item">
-                  <Link class="nav-link active" to="/admin">admin</Link>
-                </li>
+              {
+                user?  <li><button  class="dropdown-item" onClick={async () => {
+                  const success = await signOut();
+                  if (success) {
+                    alert('You are sign out');
+                  }
+                }}>Log Out</button></li>:""
+              }
                   
               </ul>             
             </div>

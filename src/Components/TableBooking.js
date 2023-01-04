@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../firebase.init';
 const TableBooking = () => {
+  const [user]=useAuthState(auth);
+  console.log(user);
   const[selectTable,setSelectTable]=useState();
      const handleAddTableBooking=(event)=>{
           event.preventDefault();
@@ -41,11 +45,11 @@ const TableBooking = () => {
                     <div className='col-md-6'>
            <h2 className='fw-semibold text-center'>Add student</h2>
      <form className='bg-light p-5 mt-5' onSubmit={handleAddTableBooking}>
-    <input placeholder='name' type="text" name="name" class="form-control mb-3" />
-    <input placeholder="email" type="text" name="email" class="form-control mb-3" />
+    <input placeholder='name' type="text" name="name" class="form-control mb-3" value={user.displayName} disabled required/>
+    <input required placeholder="email" type="text" name="email" class="form-control mb-3" value={user.email} disabled/>
     
-    <input placeholder='Date (22-12-2022)' type="date" name="bookingDate" class="form-control mb-3" />
-    <input placeholder='Time' type="time" name="bookingTime" class="form-control mb-3" />
+    <input required placeholder='Date (22-12-2022)' type="date" name="bookingDate" class="form-control mb-3" />
+    <input required placeholder='Time' type="time" name="bookingTime" class="form-control mb-3" />
     <select onChange={e=>setSelectTable(e.target.value)} class="form-select form-select mb-3" aria-label=".form-select-lg example">
   <option selected value="">Select table </option>
   <option >1</option>
@@ -55,9 +59,9 @@ const TableBooking = () => {
   <option >5</option>
   <option >6</option>
 </select>
-    <input placeholder='phone' type="text" name="phone" class="form-control mb-3" />
-    <input placeholder="address" type="text" name="address" class="form-control mb-3" />
-    <input placeholder='people' type="text" name="people" class="form-control mb-3" />
+    <input required placeholder='phone' type="text" name="phone" class="form-control mb-3" />
+    <input required placeholder="address" type="text" name="address" class="form-control mb-3" />
+    <input required placeholder='people' type="text" name="people" class="form-control mb-3" />
   <input type="submit" class="btn btn-primary" value="submit"/>
 </form> 
           </div>

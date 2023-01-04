@@ -18,7 +18,7 @@ const Home = () => {
               <h5 className="text-dark">Our Special Dish</h5>
               <h1 className='fw-bold'>World best food <br/> collection in our resturent</h1>
               <p className="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, culpa adipisci ullam tempora nulla aliquam deleniti quo quia ex veritatis. Rerum repudiandae at rem non possimus aliquam accusantium, mollitia pariatur?</p>
-              <button className='btn btn-dark fw-semibold'>Bookin a table</button>
+              <Link to="/table-booking" className='btn btn-dark fw-semibold'>Bookin a table</Link>
               <button className='btn btn-dark fw-semibold ms-4'>Watch video</button>
             </div>
             <div className="col-md-6"><img className='img-fluid ' src="https://i.ibb.co/mDyty48/toast-egg-bacon-tomatoes-microgreens-salad-2829-4806-removebg-preview-1.png" alt="" /></div>

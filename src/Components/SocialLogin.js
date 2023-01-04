@@ -25,9 +25,7 @@ const SocialLogin = () => {
         }
      return (
           <div className='text-center mx-auto'>
-                           <hr />
-                           <p>Or</p>
-                <button onClick={()=>signInWithGoogle()} className='btn btn-primary  '> google sing in</button>
+                <button onClick={()=>signInWithGoogle()} className='btn btn-primary'> google sing in</button>
                 {errorElement}
           </div>
      );
